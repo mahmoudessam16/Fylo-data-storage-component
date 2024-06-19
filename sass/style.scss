@@ -1,0 +1,185 @@
+// colors
+$PaleBlue: hsl(243, 100%, 93%);
+$GrayishBlue: hsl(229, 7%, 55%);
+$DarkBlue: hsl(228, 56%, 26%);
+$VeryDarkBlue: hsl(229, 57%, 11%);
+$size: 14px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    background-color: $VeryDarkBlue;
+    > .background {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: 50%;
+        left: 0;
+        background-image: url(../images/bg-desktop.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .fylo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        .container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items:flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
+            .left, .right {
+                background-color: $DarkBlue;
+                padding: 35px;
+            }
+            .left {
+                flex: 0.5;
+                border-radius: 7px 70px 7px 7px;
+                > img {
+                    width: 120px;
+                    margin-bottom: 25px;
+                }
+                .icons {
+                    display: flex;
+                    gap: 10px;
+                    > div {
+                        width: 40px;
+                        height: 40px;
+                        background-color: $VeryDarkBlue;
+                        border-radius: 6px;
+                        position: relative;
+                        cursor: pointer;
+                        img {
+                            width: 20px;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+            }
+            .right {
+                flex: 1;
+                border-radius: 7px;
+                position: relative;
+                .remaining {
+                    background-color: #fff;
+                    position: absolute;
+                    right: 35px;
+                    top: -40%;
+                    font-size: 12px;
+                    color: $GrayishBlue;
+                    font-weight: 700;
+                    padding: 20px 30px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 5px;
+                        height: 5px;
+                        bottom: -25%;
+                        right: 0;
+                        border-width: 20px;
+                        border-style: solid;
+                        border-color: transparent #FFF transparent transparent;
+                    }
+                    .number {
+                        font-size: 36px;
+                        color: $VeryDarkBlue;
+                        margin-right: 10px;
+                    }
+                }
+                > p {
+                    color: #b9b9b9;
+                    font-size: 14px;
+                    span {
+                        color: $PaleBlue;
+                        font-weight: 700;
+                    }
+                }
+                .range {
+                    width: 100%;
+                    height: 12px;
+                    border-radius: 10px;
+                    background-color: $VeryDarkBlue;
+                    margin: 15px 0 5px 0;
+                    position: relative;
+                    .progress {
+                        background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+                        border-radius: 10px;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 10px;
+                            height: calc(100% - 2px);
+                            background-color: white;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 1px;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+                .consume {
+                    display: flex;
+                    justify-content: space-between;
+                    color: $PaleBlue;
+                    font-size: $size;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 450px) {
+    body {
+        > .background {
+            background-image: url(../images/bg-mobile.png);
+            top: 0;
+            height: 100%;
+        }
+        .fylo {
+            width: 90%;
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                .left, .right {
+                    flex: 1;
+                    width: 100%;
+                    padding: 35px 20px;
+                }
+                .right {
+                    padding: 35px 20px 45px 20px;
+                    > p {
+                        font-size: 12px;
+                    }
+                    .remaining {
+                        right: 50%;
+                        top: 80%;
+                        transform: translateX(50%);
+                        padding: 10px 25px;
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
